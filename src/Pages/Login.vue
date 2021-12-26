@@ -37,7 +37,7 @@
         </div>
       </div>
       <div id="message">
-        <div id="name_info" class="info"><span></span></div>
+        <div id="name_info" class="info"><span>{{usernameError}}</span></div>
         <div id="password_info" class="info"><span>{{ error }}</span></div>
       </div>
     </div>
@@ -55,12 +55,13 @@ export default {
     return {
       userName: "",
       passWord: "",
-      error: ""
+      error: "",
+      usernameError:"",
     }
   },
   methods: {
     submit() {
-
+      //发送axios请求向后端验证用户名密码
       axios.post(
           "http://localhost:8080/user/login",
           {
@@ -79,7 +80,9 @@ export default {
           }return false
         }else {
           this.error = ""
-          window.location.replace("http://localhost:8080/#/home")
+          let user={"name":this.userName}
+          localStorage.setItem("user",JSON.stringify(user))
+          this.$router.push("/home")
         }
           },
           error => {
