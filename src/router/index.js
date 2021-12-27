@@ -1,6 +1,6 @@
 import VueRouter from "vue-router";
 import Login from "../Pages/Login";
-import Home from "../components/Home";
+import Home from "../Pages/Home";
 
 export default new VueRouter({
     routes:[

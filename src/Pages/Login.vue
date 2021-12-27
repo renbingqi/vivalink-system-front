@@ -82,6 +82,7 @@ export default {
           this.error = ""
           let user={"name":this.userName}
           localStorage.setItem("user",JSON.stringify(user))
+          this.$store.commit("userLogin",this.userName)
           this.$router.push("/home")
         }
           },
