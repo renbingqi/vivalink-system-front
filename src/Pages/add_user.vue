@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "add_user",
   data(){
@@ -40,13 +42,40 @@ export default {
       userName: '',
       passWord: '',
       permissions: 0,
+      errorMessage:''
     }
   },
   methods:{
     addUser(){
       console.log(this.userName,this.passWord,this.permissions)
+      // 发送axios请求
+      axios.post(
+          "http://localhost:8080/user/addUser",
+          {
+            "userName":this.userName,
+            "password":this.passWord,
+            "role":this.permissions
+          }
+      ).then(res=>{
+        if(res.data.code===200){
+          this.$message({
+            message: this.userName+"添加成功",
+            type: 'success'
+          })
+          this.$router.push('/home/usermanagement')
+        }else {
+          this.$message.error({
+            message: '用户添加失败',
+          })
+          this.errorMessage=res.data.message
+        }
+      },
+      error=>{
+        console.log(error)
+
+      })
       //添加用户成功后直接返回到用户管理界面
-      this.$router.push('/login')
+      // this.$router.push('/home')
     },
     clearInfo(){
       this.userName=""

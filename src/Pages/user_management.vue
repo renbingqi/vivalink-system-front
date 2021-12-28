@@ -3,7 +3,7 @@
     <el-button
         class="addUser"
         size="mini"
-        @click="handleEdit(scope.$index, scope.row)">添加用户
+        @click="adduser">添加用户
     </el-button>
     <el-table
         :data="tableData"
@@ -12,14 +12,14 @@
           label="编号"
           width="280px">
         <template slot-scope="scope">
-          <span style="margin-left: 10px">{{ scope.row.id }}</span>
+          <span style="margin-left: 10px">{{ scope.row.uid }}</span>
         </template>
       </el-table-column>
       <el-table-column
           label="姓名">
         <template slot-scope="scope">
           <div slot="reference" class="name-wrapper">
-            <el-tag size="medium">{{ scope.row.name }}</el-tag>
+            <el-tag size="medium">{{ scope.row.userName }}</el-tag>
           </div>
         </template>
       </el-table-column>
@@ -27,7 +27,7 @@
           label="权限">
         <template slot-scope="scope">
           <div slot="reference" class="name-wrapper">
-            <el-tag size="medium" v-if="scope.row.permissions ===0">管理员账号</el-tag>
+            <el-tag size="medium" v-if="scope.row.role ===1">管理员账号</el-tag>
             <el-tag size="medium" v-else>普通账号</el-tag>
           </div>
         </template>
@@ -52,23 +52,19 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "userManagement",
   data() {
     return {
-      tableData: [{
-        id: "1",
-        name: '王小虎',
-        permissions: 0
-      },
-        {
-          id: '2',
-          name: '王大虎',
-          permissions: 1
-        }]
+      tableData: []
     }
   },
   methods: {
+    adduser(){
+      this.$router.push("/home/adduser")
+    },
     handleEdit(index,row) {
       console.log(index,row);
     },
@@ -78,6 +74,18 @@ export default {
       console.log(user)
       this.tableData.splice(index,1)
     }
+  },
+  mounted() {
+    axios.get(
+        "http://localhost:8080/user/management"
+    ).then(res=>{
+      var user_obj=JSON.parse(res.data.message)
+      user_obj.forEach((val=>{
+        this.tableData.push(val)
+      }))
+    },error=>{
+      console.log(error)
+    })
   }
 }
 </script>

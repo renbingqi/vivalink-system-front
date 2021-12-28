@@ -21,18 +21,14 @@
       <span class="el-icon-s-custom"></span>
       <span>&nbsp;&nbsp;</span>
       <span>{{userName}}</span>
-
     </el-header>
-<!--    <userManagement></userManagement>-->
-    <addUser></addUser>
+    <router-view></router-view>
   </el-container>
 
 
 </template>
 
 <script>
-// import userManagement from '../Pages/user_management'
-import addUser from '../Pages/add_user'
 export default {
 name: "header",
   data(){
@@ -46,8 +42,6 @@ name: "header",
     }
   },
   components:{
-    // userManagement,
-    addUser
   },
   methods: {
     loginout(){
