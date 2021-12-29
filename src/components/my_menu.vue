@@ -3,8 +3,12 @@
     <el-menu background-color="#b9def0">
       <el-submenu index="1">
         <div slot="title" class="menu"><i class="el-icon-video-camera"></i>监控系统</div>
-        <el-menu-item-group >
-          <el-menu-item index="1-1" class="menu-item">API监控</el-menu-item>
+        <el-menu-item-group>
+          <el-submenu index="1-4">
+            <template slot="title">API监控</template>
+            <el-menu-item index="1-4-1">vcloud</el-menu-item>
+            <el-menu-item index="1-4-2">sweden</el-menu-item>
+          </el-submenu>
           <el-menu-item index="1-2" class="menu-item">S3监控</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
@@ -28,12 +32,12 @@
 
 <script>
 export default {
-name: "menu"
+  name: "menu"
 }
 </script>
 
 <style scoped>
-.menu-item{
+.menu-item {
   color: white;
   font-size: 15px;
 }

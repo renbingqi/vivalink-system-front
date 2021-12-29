@@ -4,13 +4,15 @@
       <div class="form-group">
         <label  class="col-sm-2 control-label">用户名:</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputEmail3" placeholder="用户名不能少于3个字符" v-model="userName">
+          <input type="text" class="form-control" id="inputEmail3" placeholder="用户名不能少于三个字符" v-model="userName">
         </div>
+        <span style="position: absolute;right: 90px;top: 30px;color: red">{{nameErrorMessage}}</span>
       </div>
       <div class="form-group">
         <label  class="col-sm-2 control-label">密码:</label>
         <div class="col-sm-10">
           <input type="password" class="form-control" id="inputPassword3" placeholder="密码不能少于三个字符" v-model="passWord">
+          <span style="position: absolute;right: 120px;top: 30px;color: red">{{passwordErrorMessage}}</span>
         </div>
       </div>
       <div class="form-group">
@@ -42,7 +44,8 @@ export default {
       userName: '',
       passWord: '',
       permissions: 0,
-      errorMessage:''
+      nameErrorMessage:'',
+      passwordErrorMessage:''
     }
   },
   methods:{
@@ -82,6 +85,27 @@ export default {
       this.passWord=""
       this.permissions=0
     }
+  },
+  watch:{
+    userName(val){
+      var patt = /\w{4,}/
+      console.log(patt.test(val))
+      if (patt.test(val)){
+        this.nameErrorMessage=""
+      }else {
+        this.nameErrorMessage="输入的用户名无效"
+        return false
+      }
+    },
+    passWord(val){
+      var patt = /\w{4,}/
+      if (patt.test(val)){
+        this.passwordErrorMessage=""
+      }else {
+        this.passwordErrorMessage="输入的密码无效"
+        return false
+      }
+    }
   }
 }
 </script>
@@ -92,7 +116,6 @@ html, body {
   height: 100%;
   overflow: hidden;
 }
-
 
 #context {
   position: relative;

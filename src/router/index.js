@@ -3,6 +3,7 @@ import Login from "../Pages/Login";
 import Home from "../Pages/Home";
 import userManagement from "../Pages/user_management"
 import addUser from "../Pages/add_user"
+import API from "../Pages/api_view"
 export default new VueRouter({
     routes:[
         {
@@ -16,6 +17,10 @@ export default new VueRouter({
                 {
                     path:"adduser",
                     component:addUser,
+                },
+                {
+                    path:"api",
+                    component:API,
                 }
             ]
         },

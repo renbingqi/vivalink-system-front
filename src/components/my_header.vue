@@ -54,7 +54,7 @@ name: "header",
 
 <style scoped>
 .el-header {
-  background-color: whitesmoke;
+  background-color: #d4d4d4;
   color: #333;
   line-height: 60px;
 }
