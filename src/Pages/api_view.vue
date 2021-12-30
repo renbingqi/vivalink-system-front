@@ -1,15 +1,17 @@
 <template>
   <el-table
       :data="tableData"
-      style="width: 100%"
-      :row-class-name="tableRowClassName">
+      style="width: 100%; overflow: auto"
+      :row-class-name="tableRowClassName"
+      height="10px">
     <el-table-column
         prop="api_name"
         label="接口名">
     </el-table-column>
     <el-table-column
         prop="result"
-        label="错误率">
+        label="错误率"
+        sortable>
     </el-table-column>
 
     <el-table-column label="查看详情">
@@ -60,17 +62,63 @@ export default {
   },
   data() {
     return {
-      tableData: []
+      tableData: [],
+      vcloud_data: [],
+      sweden_data: []
+    }
+  },
+  watch: {
+    $route: {
+      handler: function (val) {
+        var path = val.fullPath.split('/')[3]
+        if (path === "vcloud") {
+          this.tableData=[]
+          this.tableData = this.vcloud_data
+        } else {
+          this.tableData=[]
+          this.tableData = this.sweden_data
+        }
+      },deep:true
     }
   },
   mounted() {
+    //获取vcloud相关数据
     axios.get(
-      "http://localhost:8080/api/apiresult"
-    ).then(res=>{
-      this.tableData=res.data.message
-    },error=>{
+        "http://localhost:8080/api/apiresult",
+        {
+          params: {
+            "server": "vcloud"
+          }
+        }
+    ).then(res => {
+      this.vcloud_data = res.data.message
+      var path = this.$route.path.split('/')[3]
+      if(path === "vcloud"){
+        console.log(this.vcloud_data)
+        this.tableData=this.vcloud_data
+      }
+    }, error => {
       console.log(error)
-    })
-  }
+    });
+    //获取sweden相关数据
+    axios.get(
+        "http://localhost:8080/api/apiresult",
+        {
+          params: {
+            "server": "sweden"
+          }
+        }
+    ).then(res => {
+      this.sweden_data = res.data.message
+      var path = this.$route.path.split('/')[3]
+      if(path === "sweden"){
+        console.log(this.sweden_data)
+        this.tableData=this.sweden_data
+      }
+    }, error => {
+      console.log(error)
+    });
+
+  },
 }
 </script>

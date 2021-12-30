@@ -6,8 +6,8 @@
         <el-menu-item-group>
           <el-submenu index="1-4">
             <template slot="title">API监控</template>
-            <el-menu-item index="1-4-1">vcloud</el-menu-item>
-            <el-menu-item index="1-4-2">sweden</el-menu-item>
+            <el-menu-item index="1-4-1" @click="vclouddata">vcloud</el-menu-item>
+            <el-menu-item index="1-4-2" @click="swedendata">sweden</el-menu-item>
           </el-submenu>
           <el-menu-item index="1-2" class="menu-item">S3监控</el-menu-item>
         </el-menu-item-group>
@@ -32,7 +32,15 @@
 
 <script>
 export default {
-  name: "menu"
+  name: "menu",
+  methods:{
+    vclouddata(){
+      this.$router.push("/home/api/vcloud")
+    },
+    swedendata(){
+      this.$router.push("/home/api/sweden")
+    }
+  }
 }
 </script>
 
