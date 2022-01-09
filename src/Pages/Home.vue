@@ -9,7 +9,9 @@
 
 
 <style>
-
+.el-tabs--border-card>.el-tabs__content{
+  padding: 0;
+}
 </style>
 
 <script>

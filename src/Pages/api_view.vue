@@ -3,7 +3,8 @@
       :data="tableData"
       style="width: 100%; overflow: auto"
       :row-class-name="tableRowClassName"
-      height="10px">
+      height="10px"
+      :default-sort="{prop:'result',order:'descending'}">
     <el-table-column
         prop="api_name"
         label="接口名">
@@ -11,7 +12,8 @@
     <el-table-column
         prop="result"
         label="错误率"
-        sortable>
+        sortable
+    >
     </el-table-column>
 
     <el-table-column label="查看详情">
@@ -23,6 +25,8 @@
       </template>
     </el-table-column>
   </el-table>
+
+
 </template>
 
 <style>
@@ -72,13 +76,13 @@ export default {
       handler: function (val) {
         var path = val.fullPath.split('/')[3]
         if (path === "vcloud") {
-          this.tableData=[]
+          this.tableData = []
           this.tableData = this.vcloud_data
         } else {
-          this.tableData=[]
+          this.tableData = []
           this.tableData = this.sweden_data
         }
-      },deep:true
+      }, deep: true
     }
   },
   mounted() {
@@ -93,9 +97,9 @@ export default {
     ).then(res => {
       this.vcloud_data = res.data.message
       var path = this.$route.path.split('/')[3]
-      if(path === "vcloud"){
+      if (path === "vcloud") {
         console.log(this.vcloud_data)
-        this.tableData=this.vcloud_data
+        this.tableData = this.vcloud_data
       }
     }, error => {
       console.log(error)
@@ -111,9 +115,9 @@ export default {
     ).then(res => {
       this.sweden_data = res.data.message
       var path = this.$route.path.split('/')[3]
-      if(path === "sweden"){
+      if (path === "sweden") {
         console.log(this.sweden_data)
-        this.tableData=this.sweden_data
+        this.tableData = this.sweden_data
       }
     }, error => {
       console.log(error)

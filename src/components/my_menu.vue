@@ -4,11 +4,7 @@
       <el-submenu index="1">
         <div slot="title" class="menu"><i class="el-icon-video-camera"></i>监控系统</div>
         <el-menu-item-group>
-          <el-submenu index="1-4">
-            <template slot="title">API监控</template>
-            <el-menu-item index="1-4-1" @click="vclouddata">vcloud</el-menu-item>
-            <el-menu-item index="1-4-2" @click="swedendata">sweden</el-menu-item>
-          </el-submenu>
+          <el-menu-item index="1-1" class="menu-item">API监控</el-menu-item>
           <el-menu-item index="1-2" class="menu-item">S3监控</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
@@ -33,11 +29,11 @@
 <script>
 export default {
   name: "menu",
-  methods:{
-    vclouddata(){
+  methods: {
+    vclouddata() {
       this.$router.push("/home/api/vcloud")
     },
-    swedendata(){
+    swedendata() {
       this.$router.push("/home/api/sweden")
     }
   }
