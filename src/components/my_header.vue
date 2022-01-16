@@ -22,6 +22,7 @@
       <span>&nbsp;&nbsp;</span>
       <span>{{ userName }}</span>
     </el-header>
+
     <api-tab-menu v-show="showTab"></api-tab-menu>
     <router-view></router-view>
   </el-container>
@@ -53,9 +54,19 @@ export default {
       localStorage.removeItem("user");
       this.$router.push("/login");
     },
+    checkUrl(){
+      if (this.$route.path.split('/')[2] === "api") {
+        this.showTab=true;
+        console.log(this.showTab)
+      }
+    }
+  },
+  watch:{
+    '$route':'checkUrl'
   },
   mounted() {
     console.log(this.$route.path.split('/')[2])
+    console.log("该页面加载完毕")
     if (this.$route.path.split('/')[2] === "api") {
       this.showTab=true;
       console.log(this.showTab)

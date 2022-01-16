@@ -4,7 +4,7 @@
       <el-submenu index="1">
         <div slot="title" class="menu"><i class="el-icon-video-camera"></i>监控系统</div>
         <el-menu-item-group>
-          <el-menu-item index="1-1" class="menu-item">API监控</el-menu-item>
+          <el-menu-item index="1-1" class="menu-item" @click="api_listener">API监控</el-menu-item>
           <el-menu-item index="1-2" class="menu-item">S3监控</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
@@ -30,6 +30,9 @@
 export default {
   name: "menu",
   methods: {
+    api_listener(){
+      this.$router.push("/home/api/vcloud")
+    },
     vclouddata() {
       this.$router.push("/home/api/vcloud")
     },
