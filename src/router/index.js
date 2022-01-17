@@ -1,9 +1,10 @@
 import VueRouter from "vue-router";
 import Login from "../Pages/Login";
 import Home from "../Pages/Home";
-import userManagement from "../Pages/user_management"
-import addUser from "../Pages/add_user"
-import API from "../Pages/api_view"
+import userManagement from "../Pages/user_management";
+import addUser from "../Pages/add_user";
+import API from "../Pages/api_view";
+import apiDetail from "../Pages/api_detail"
 
 export default new VueRouter({
     routes: [
@@ -20,12 +21,16 @@ export default new VueRouter({
                     component: addUser,
                 },
                 {
+                    path: "api/detail",
+                    component: apiDetail
+                },
+                {
                     path: "api",
                     component: API,
                     children: [
                         {
                             path: "vcloud",
-                            component: API
+                            component: API,
                         },
                         {
                             path: "sweden",

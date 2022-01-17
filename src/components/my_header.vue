@@ -38,7 +38,8 @@ export default {
   data() {
     return {
       name: localStorage.getItem('user'),
-      showTab:false
+      showTab:false,
+      search:""
     }
   },
   computed: {
@@ -47,7 +48,7 @@ export default {
     }
   },
   components: {
-    apiTabMenu
+    apiTabMenu,
   },
   methods: {
     loginout() {
@@ -57,7 +58,6 @@ export default {
     checkUrl(){
       if (this.$route.path.split('/')[2] === "api") {
         this.showTab=true;
-        console.log(this.showTab)
       }
     }
   },
@@ -65,11 +65,8 @@ export default {
     '$route':'checkUrl'
   },
   mounted() {
-    console.log(this.$route.path.split('/')[2])
-    console.log("该页面加载完毕")
     if (this.$route.path.split('/')[2] === "api") {
       this.showTab=true;
-      console.log(this.showTab)
     }
   }
 

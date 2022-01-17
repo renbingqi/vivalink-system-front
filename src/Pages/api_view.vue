@@ -62,6 +62,10 @@ export default {
         return 'warning1-row'
       }
       return '';
+    },
+    handleEdit(index,item){
+      var aid=item.aid
+      this.$router.push("/home/api/detail?aid="+aid)
     }
   },
   data() {
@@ -98,7 +102,6 @@ export default {
       this.vcloud_data = res.data.message
       var path = this.$route.path.split('/')[3]
       if (path === "vcloud") {
-        console.log(this.vcloud_data)
         this.tableData = this.vcloud_data
       }
     }, error => {
