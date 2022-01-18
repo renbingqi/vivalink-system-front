@@ -63,9 +63,9 @@ export default {
       }
       return '';
     },
-    handleEdit(index,item){
-      var aid=item.aid
-      this.$router.push("/home/api/detail?aid="+aid)
+    handleEdit(index, item) {
+      var aid = item.aid
+      this.$router.push("/home/api/detail?aid=" + aid)
     }
   },
   data() {

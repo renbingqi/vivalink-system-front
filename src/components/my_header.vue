@@ -39,7 +39,7 @@ export default {
     return {
       name: localStorage.getItem('user'),
       showTab:false,
-      search:""
+
     }
   },
   computed: {
@@ -58,6 +58,8 @@ export default {
     checkUrl(){
       if (this.$route.path.split('/')[2] === "api") {
         this.showTab=true;
+      }else{
+        this.showTab=false;
       }
     }
   },
