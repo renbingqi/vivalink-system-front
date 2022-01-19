@@ -24,6 +24,7 @@
     </el-header>
 
     <api-tab-menu v-show="showTab"></api-tab-menu>
+    <s3-tab-menu v-show="showS3Tab"></s3-tab-menu>
     <router-view></router-view>
   </el-container>
 
@@ -32,13 +33,14 @@
 
 <script>
 import apiTabMenu from '../components/api_tab_menu'
-
+import s3TabMenu from '../components/s3_tab_menu'
 export default {
   name: "header",
   data() {
     return {
       name: localStorage.getItem('user'),
       showTab:false,
+      showS3Tab:false
 
     }
   },
@@ -49,6 +51,7 @@ export default {
   },
   components: {
     apiTabMenu,
+    s3TabMenu
   },
   methods: {
     loginout() {
@@ -56,10 +59,16 @@ export default {
       this.$router.push("/login");
     },
     checkUrl(){
+      var s3_list=["result","file","sensor"]
       if (this.$route.path.split('/')[2] === "api") {
         this.showTab=true;
-      }else{
+        this.showS3Tab=false;
+      }else if(s3_list.includes(this.$route.path.split('/')[3])){
+        this.showS3Tab=true;
         this.showTab=false;
+      }else {
+        this.showTab=false;
+        this.showS3Tab=false;
       }
     }
   },

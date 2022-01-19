@@ -6,7 +6,9 @@ import addUser from "../Pages/add_user";
 import API from "../Pages/api_view";
 import apiDetail from "../Pages/api_detail"
 import S3 from "../Pages/s3"
-import result from "../Pages/s3_detail_result"
+import S3result from "../Pages/s3_detail_result"
+import S3file from "../Pages/s3_file_detail"
+import S3sensor from "../Pages/s3_sensor_detail"
 
 export default new VueRouter({
     routes: [
@@ -46,7 +48,15 @@ export default new VueRouter({
                 },
                 {
                     path: "s3/result",
-                    component:result
+                    component:S3result
+                },
+                {
+                    path: "s3/file",
+                    component:S3file
+                },
+                {
+                    path: "s3/sensor",
+                    component:S3sensor
                 },
             ]
         },
