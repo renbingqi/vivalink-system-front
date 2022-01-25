@@ -31,7 +31,6 @@ export default {
   },
   methods:{
     s3detail(id){
-      console.log(id)
       this.$router.push("/home/s3/result?detail="+id)
     }
   },

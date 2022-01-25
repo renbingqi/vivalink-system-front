@@ -89,7 +89,6 @@ export default {
   watch:{
     userName(val){
       var patt = /\w{4,}/
-      console.log(patt.test(val))
       if (patt.test(val)){
         this.nameErrorMessage=""
       }else {

@@ -8,7 +8,7 @@
     <el-table-column
         prop=""
         label=""
-        width="80px">
+        width="10px">
     </el-table-column>
     <el-table-column
         prop="recordTime"

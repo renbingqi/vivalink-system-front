@@ -40,7 +40,8 @@ export default {
     return {
       name: localStorage.getItem('user'),
       showTab:false,
-      showS3Tab:false
+      showS3Tab:false,
+      search:""
 
     }
   },
@@ -78,6 +79,8 @@ export default {
   mounted() {
     if (this.$route.path.split('/')[2] === "api") {
       this.showTab=true;
+    }else if(this.$route.path.split('/')[2] === "s3"){
+      this.showS3Tab=true
     }
   }
 

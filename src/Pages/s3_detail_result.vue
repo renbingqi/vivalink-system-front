@@ -2,7 +2,6 @@
   <el-table
       :data="result"
       style="width: 100%; overflow: auto"
-      :row-class-name="tableRowClassName"
       height="10px"
       :default-sort="{prop:'result',order:'descending'}">
     <el-table-column
@@ -40,7 +39,6 @@ export default {
         "http://localhost:8080/s3/s3detail?id="+id+"&detail=result"
     ).then(res => {
       this.result = res.data.message
-      console.log(this.result)
     }, err => {
       console.log(err)
     })

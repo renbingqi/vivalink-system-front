@@ -35,8 +35,20 @@ export default {
         this.itemType=2
       }
 
+    },
+    checkUrl(){
+      var tab= this.$route.fullPath.split("/")
+      if(tab.length !== 4){
+        this.itemType=0
+      }else {
+        return
+      }
     }
+  },
+  watch:{
+    '$route':'checkUrl'
   }
+
 }
 </script>
 
