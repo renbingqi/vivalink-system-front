@@ -1,6 +1,6 @@
 <template>
   <el-aside width="200px" style="background-color: #b9def0">
-    <el-menu background-color="#b9def0">
+    <el-menu background-color="#b9def0" active-text-color="#409EFF">
       <el-submenu index="1">
         <div slot="title" class="menu"><i class="el-icon-video-camera"></i>监控系统</div>
         <el-menu-item-group>

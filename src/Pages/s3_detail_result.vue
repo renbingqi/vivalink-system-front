@@ -38,7 +38,11 @@ export default {
     axios.get(
         "http://localhost:8080/s3/s3detail?id="+id+"&detail=result"
     ).then(res => {
-      this.result = res.data.message
+      this.result = res.data.message;
+      var str_id=id.toString()
+      var data={};
+      data[str_id]=this.result
+      this.$store.commit("setS3Data",data)
     }, err => {
       console.log(err)
     })
