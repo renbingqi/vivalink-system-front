@@ -1,10 +1,11 @@
 import * as echarts from "echarts";
 
-function drawPicture(date_list,sensor_list){
-    var myChart = echarts.init(document.getElementById('main'));
+function drawPicture(date_list,sensor_list,sensorType,id){
+    var tab_id=id
+    var myChart = echarts.init(document.getElementById(tab_id));
     myChart.setOption({
         title: {
-            text: 'ECG设备'
+            text: sensorType
         },
         tooltip: {},
         xAxis: {

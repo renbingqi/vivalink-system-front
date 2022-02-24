@@ -1,5 +1,10 @@
 <template>
-  <div id="main" style="width: 600px;height:400px;"></div>
+  <div id="draw">
+    <div id="ECG" style="width: 600px;height:400px;"></div>
+    <div id="Temp" style="width: 600px;height:400px;"></div>
+    <div id="spo2" style="width: 600px;height:400px;"></div>
+    <div id="bp" style="width: 600px;height:400px;"></div>
+  </div>
 </template>
 
 <script>
@@ -17,6 +22,9 @@ export default {
 
     var date_list = []
     var ecg_list = []
+    var temp_list = []
+    var spo2_list = []
+    var bp_list = []
     var data_obj = {}
     for (var item in data) {
       var ecg_sensor = 0;
@@ -37,17 +45,32 @@ export default {
         }
       }
       data_obj[format_date] = {"ecg": ecg_sensor, "temp": temp_sensor, "spo2": spo2_sensor, "bp": bp_sensor}
-      console.log(data_obj)
     }
     for (var date in data_obj){
       date_list.push(date)
       ecg_list.push(data_obj[date]["ecg"])
+      temp_list.push(data_obj[date]["temp"])
+      spo2_list.push(data_obj[date]["spo2"])
+      bp_list.push(data_obj[date]["bp"])
     }
-    drawPicture(date_list,ecg_list)
+    drawPicture(date_list,ecg_list,"ECG设备","ECG")
+    drawPicture(date_list,temp_list,"Temp设备","Temp")
+    drawPicture(date_list,spo2_list,"SpO2设备","spo2")
+    drawPicture(date_list,bp_list,"BP设备","bp")
   }
 }
 </script>
 
 <style scoped>
+/*#draw{*/
+/*  position: relative;*/
+/*}*/
+#draw{
+
+}
+#ECG,#Temp,#spo2,#bp{
+  float: left;
+  margin-left: 80px;
+}
 
 </style>
