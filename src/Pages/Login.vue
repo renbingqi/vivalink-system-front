@@ -83,7 +83,7 @@ export default {
           let user={"name":this.userName}
           localStorage.setItem("user",JSON.stringify(user))
           this.$store.commit("userLogin",this.userName)
-          this.$router.push("/home")
+          this.$router.push("/home/api/vcloud")
         }
           },
           error => {

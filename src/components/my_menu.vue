@@ -11,8 +11,8 @@
       <el-submenu index="2">
         <div slot="title" class="menu"><i class="el-icon-menu"></i>系统管理</div>
         <el-menu-item-group>
-          <el-menu-item index="2-1" class="menu-item">用户管理</el-menu-item>
-          <el-menu-item index="2-2" class="menu-item">监控管理</el-menu-item>
+          <el-menu-item index="2-1" class="menu-item" @click="user_management">用户管理</el-menu-item>
+          <el-menu-item index="2-2" class="menu-item" @click="monitor_management">监控管理</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="3">
@@ -41,6 +41,9 @@ export default {
     },
     swedendata() {
       this.$router.push("/home/api/sweden")
+    },
+    user_management(){
+      this.$router.push("/home/usermanagement")
     }
   }
 }

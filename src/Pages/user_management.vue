@@ -3,6 +3,7 @@
     <el-button
         class="addUser"
         size="mini"
+        icon="el-icon-circle-plus-outline"
         @click="adduser">添加用户
     </el-button>
     <el-table
@@ -36,15 +37,21 @@
         <template slot-scope="scope">
           <el-button
               size="mini"
+              icon="el-icon-edit"
               @click="handleEdit(scope.$index, scope.row)">编辑
           </el-button>
           <el-button
-              size="mini"
               type="danger"
-              @click="handleDelete(scope.$index, scope.row)">删除
+              size="mini"
+              icon="el-icon-delete"
+              @click="handleEdit(scope.$index, scope.row)">删除
           </el-button>
+
+
         </template>
+
       </el-table-column>
+
     </el-table>
   </div>
 
@@ -58,39 +65,54 @@ export default {
   name: "userManagement",
   data() {
     return {
-      tableData: []
+      tableData: [],
+      Superamdin:false
     }
   },
   methods: {
-    adduser(){
+    adduser() {
       this.$router.push("/home/adduser")
     },
-    handleEdit(index,row) {
-      console.log(index,row);
+    handleEdit(index, row) {
+      console.log(index, row);
     },
     handleDelete(index) {
-      var user=this.tableData[index]
+      var user = this.tableData[index]
       //调用后端删除用户的接口
-      console.log(user)
-      this.tableData.splice(index,1)
+      axios.get(
+          "http://localhost:8080/user/delUser",
+          {
+            "params": {
+              "uid": user.uid
+            }
+          }
+      ).then(res => {
+        console.log(res)
+        this.tableData.splice(index, 1)
+      }, error => {
+        alert(error.toString())
+      })
+
     }
   },
   mounted() {
     axios.get(
         "http://localhost:8080/user/management"
-    ).then(res=>{
-      var user_obj=JSON.parse(res.data.message)
-      user_obj.forEach((val=>{
+    ).then(res => {
+      var user_obj = JSON.parse(res.data.message)
+      user_obj.forEach((val => {
+        if (val.uid !== 1){
         this.tableData.push(val)
+        }
       }))
-    },error=>{
+    }, error => {
       console.log(error)
     })
   }
 }
 </script>
 <style>
-.addUser{
+.addUser {
   float: right;
   margin: 8px;
 }
