@@ -4,7 +4,7 @@
     <el-collapse-item :title=key :name=index class="file">
       <div v-for="(item,index) in value" :key="index">
         <hr>
-        <el-link class="down" type="primary">点击下载</el-link>
+        <el-link class="down" type="primary" @click="download(item)">点击下载</el-link>
         {{item}}
       </div>
     </el-collapse-item>
@@ -21,6 +21,18 @@ export default {
     return {
       activeName: '1',
       s3_file_list: {}
+    }
+  },
+  methods :{
+    download(item){
+      var id=this.$route.fullPath.split("=")[1]
+      axios.get("http://localhost:8080/s3/download_file?id="+id+"&file="+item).then(
+          res=>{
+            console.log(res)
+          },error=>{
+            console.log(error)
+          }
+      )
     }
   },
   mounted() {

@@ -1,14 +1,14 @@
 import VueRouter from "vue-router";
 import Login from "../Pages/Login";
 import Home from "../Pages/Home";
-import userManagement from "../Pages/user_management";
-import addUser from "../Pages/add_user";
-import API from "../Pages/api_view";
-import apiDetail from "../Pages/api_detail"
-import S3 from "../Pages/s3"
-import S3result from "../Pages/s3_detail_result"
-import S3file from "../Pages/s3_file_detail"
-import S3sensor from "../Pages/s3_sensor_detail"
+import userManagement from "../Pages/user/user_management";
+import addUser from "../Pages/user/add_user";
+import API from "../Pages/api/api_view";
+import apiDetail from "../Pages/api/api_detail"
+import S3 from "../Pages/s3/s3"
+import S3result from "../Pages/s3/s3_detail_result"
+import S3file from "../Pages/s3/s3_file_detail"
+import S3sensor from "../Pages/s3/s3_sensor_detail"
 
 export default new VueRouter({
     routes: [

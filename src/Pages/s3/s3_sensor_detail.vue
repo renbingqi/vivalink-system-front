@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import timeStampToTime from '../utils/timestampToTime.js'
-import drawPicture from "../utils/draw";
+import timeStampToTime from '../../utils/timestampToTime.js'
+import drawPicture from "../../utils/draw";
 // 基于准备好的dom，初始化echarts实例
 
 export default {

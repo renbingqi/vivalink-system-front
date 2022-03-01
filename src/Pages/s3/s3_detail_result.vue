@@ -50,7 +50,7 @@
 
 <script>
 import axios from "axios";
-import timeStampToTime from "../utils/timestampToTime";
+import timeStampToTime from "../../utils/timestampToTime";
 
 export default {
   name: "s3_detail_result",
