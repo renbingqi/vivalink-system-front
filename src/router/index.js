@@ -9,6 +9,7 @@ import S3 from "../Pages/s3/s3"
 import S3result from "../Pages/s3/s3_detail_result"
 import S3file from "../Pages/s3/s3_file_detail"
 import S3sensor from "../Pages/s3/s3_sensor_detail"
+import apiManagement from "../Pages/management/api/api_management";
 
 export default new VueRouter({
     routes: [
@@ -19,6 +20,10 @@ export default new VueRouter({
                 {
                     path: "usermanagement",
                     component: userManagement,
+                },
+                {
+                    path: "apimanagement",
+                    component: apiManagement,
                 },
                 {
                     path: "adduser",

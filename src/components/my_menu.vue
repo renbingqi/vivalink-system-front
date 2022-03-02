@@ -1,6 +1,6 @@
 <template>
   <el-aside width="200px" style="background-color: #b9def0">
-    <el-menu background-color="#b9def0" active-text-color="#409EFF">
+    <el-menu background-color="#b9def0" active-text-color="#409EFF" unique-opened="false">
       <el-submenu index="1">
         <div slot="title" class="menu"><i class="el-icon-video-camera"></i>监控系统</div>
         <el-menu-item-group>
@@ -12,7 +12,11 @@
         <div slot="title" class="menu"><i class="el-icon-menu"></i>系统管理</div>
         <el-menu-item-group>
           <el-menu-item index="2-1" class="menu-item" @click="user_management">用户管理</el-menu-item>
-          <el-menu-item index="2-2" class="menu-item" @click="monitor_management">监控管理</el-menu-item>
+          <el-submenu index="2-2">
+            <template slot="title" class="monitor">监控管理</template>
+            <el-menu-item index="2-2-1" class="menu-item" @click="api_management">API管理</el-menu-item>
+            <el-menu-item index="2-2-2" class="menu-item" @click="s3_management">S3管理</el-menu-item>
+          </el-submenu>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="3">
@@ -44,6 +48,9 @@ export default {
     },
     user_management(){
       this.$router.push("/home/usermanagement")
+    },
+    api_management(){
+      this.$router.push("/home/apimanagement")
     }
   }
 }
