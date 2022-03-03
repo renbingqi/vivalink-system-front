@@ -4,24 +4,16 @@
         class="addUser"
         size="mini"
         icon="el-icon-circle-plus-outline"
-        @click="adduser">新增API监控
+        @click="addapi">新增API监控
     </el-button>
     <el-table
         :data="tableData"
         style="width: 100%">
-      <el-table-column
-          label="Id"
-          width="50px"
-          prop="id">
 
-      </el-table-column>
-      <el-table-column
-          label="Token"
-          prop="token">
-      </el-table-column>
       <el-table-column
           label="Name"
-          prop="name">
+          prop="name"
+      width="650px">
 
       </el-table-column>
       <el-table-column
@@ -29,22 +21,11 @@
           prop="type">
       </el-table-column>
       <el-table-column
-          label="Auth "
-      prop="auth">
-      </el-table-column>
-      <el-table-column
-          label="Params"
-      prop="params">
-      </el-table-column>
-      <el-table-column
-          label="Condition"
-      prop="condition">
-      </el-table-column>
-      <el-table-column
           label="Alias"
       prop="alias">
       </el-table-column>
-      <el-table-column label="操作">
+      <el-table-column label="操作"
+      width="200px">
         <template slot-scope="scope">
           <el-button
               size="mini"
@@ -55,7 +36,7 @@
               type="danger"
               size="mini"
               icon="el-icon-delete"
-              @click="handleEdit(scope.$index, scope.row)">删除
+              @click="handleDelete(scope.$index, scope.row)">删除
           </el-button>
 
 
@@ -79,20 +60,20 @@ export default {
     }
   },
   methods: {
-    adduser() {
-      this.$router.push("/home/adduser")
+    addapi() {
+      this.$router.push("/home/addapi")
     },
     handleEdit(index, row) {
       console.log(index, row);
     },
     handleDelete(index) {
-      var user = this.tableData[index]
-      //调用后端删除用户的接口
+      var obj = this.tableData[index]
+      //调用后端删除api的接口
       axios.get(
-          "http://localhost:8080/user/delUser",
+          "http://localhost:8080/api/apiDelete",
           {
             "params": {
-              "uid": user.uid
+              "aid": obj.id
             }
           }
       ).then(res => {

@@ -10,6 +10,7 @@ import S3result from "../Pages/s3/s3_detail_result"
 import S3file from "../Pages/s3/s3_file_detail"
 import S3sensor from "../Pages/s3/s3_sensor_detail"
 import apiManagement from "../Pages/management/api/api_management";
+import addApi from "../Pages/management/api/api_add";
 
 export default new VueRouter({
     routes: [
@@ -28,6 +29,10 @@ export default new VueRouter({
                 {
                     path: "adduser",
                     component: addUser,
+                },
+                {
+                    path: "addapi",
+                    component: addApi,
                 },
                 {
                     path: "api/detail",
