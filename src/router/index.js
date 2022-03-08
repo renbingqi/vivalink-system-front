@@ -11,6 +11,8 @@ import S3file from "../Pages/s3/s3_file_detail"
 import S3sensor from "../Pages/s3/s3_sensor_detail"
 import apiManagement from "../Pages/management/api/api_management";
 import addApi from "../Pages/management/api/api_add";
+import apiEdit from "../Pages/management/api/api_edit";
+
 
 export default new VueRouter({
     routes: [
@@ -25,6 +27,10 @@ export default new VueRouter({
                 {
                     path: "apimanagement",
                     component: apiManagement,
+                },
+                {
+                    path: "apiedit",
+                    component: apiEdit,
                 },
                 {
                     path: "adduser",

@@ -32,13 +32,15 @@
       </el-form-item>
       <el-form-item size="large">
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
-        <el-button>取消</el-button>
+        <el-button @click="onCancel">取消</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "api_add",
   data() {
@@ -58,7 +60,23 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log(this.sizeForm);
+      axios.post(
+          "http://localhost:8080/api/apiAdd",
+          {"apiName":this.sizeForm.name,
+            "method":this.sizeForm.method,
+            "authorization":this.sizeForm.authorization,
+            "params":this.sizeForm.params,
+            "condition":this.sizeForm.condition,
+            "alias":this.sizeForm.alias,
+            "token":this.sizeForm.token
+          },
+      ).then(res=>{
+        if (res.data.code === 200){
+          this.$router.push("/home/apimanagement")
+        }
+      })},
+    onCancel(){
+      this.$router.push("/home/apimanagement")
     }
   }
 };

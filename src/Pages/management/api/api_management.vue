@@ -64,7 +64,8 @@ export default {
       this.$router.push("/home/addapi")
     },
     handleEdit(index, row) {
-      console.log(index, row);
+      var aid=row.id
+      this.$router.push("/home/apiedit?aid="+aid)
     },
     handleDelete(index) {
       var obj = this.tableData[index]
@@ -97,6 +98,7 @@ export default {
     }, error => {
       console.log(error)
     })
+    this.$store.state.api_list=this.tableData
   }
 }
 </script>

@@ -23,7 +23,8 @@ const mutations = {
 //准备state——用于存储数据
 const state = {
 	userName:"", //当前的和
-	s3Data:''
+	s3Data:'',
+	api_list:''
 }
 
 //创建并暴露store
