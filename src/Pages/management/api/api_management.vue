@@ -93,6 +93,7 @@ export default {
       var user_obj = res.data.message
       user_obj.forEach((val => {
           this.tableData.push(val)
+            console.log(val)
         }
       ))
     }, error => {

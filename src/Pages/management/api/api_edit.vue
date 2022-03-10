@@ -39,11 +39,15 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "api_edit",
   data(){
     return{
-      apiInfo:""
+      apiInfo:"",
+      token_list:[{"id":1,"name":"vivalnk-testing-ucsf-af"},{"id":2,"name":"vcloud_app_token"},
+        {"id":3,"name":"swe_token"}]
     }
   },
   mounted() {
@@ -51,13 +55,28 @@ export default {
     this.$store.state.api_list.forEach(val=>{
       if(val.id === parseInt(aid)){
         this.apiInfo = val
-        console.log(this.apiInfo)
       }
     })
   },
   methods:{
     onSubmit() {
-      console.log(this.apiInfo)
+      axios.post(
+          "http://localhost:8080/api/apiUpdate",
+          {
+            "id":this.apiInfo.id,
+            "name":this.apiInfo.name,
+            "type":this.apiInfo.type,
+            "auth":this.apiInfo.auth,
+            "params":this.apiInfo.params,
+            "condition":this.apiInfo.condition,
+            "alias":this.apiInfo.alias,
+            "token":this.apiInfo.token
+          },
+      ).then(res=>{
+        if (res.data.code === 200){
+          this.$router.push("/home/apimanagement")
+        }
+      })
     },
     onCancel(){
       this.$router.push("/home/apimanagement")
