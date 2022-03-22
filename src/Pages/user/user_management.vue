@@ -44,7 +44,7 @@
               type="danger"
               size="mini"
               icon="el-icon-delete"
-              @click="handleEdit(scope.$index, scope.row)">删除
+              @click="handleDelete(scope.$index, scope.row)">删除
           </el-button>
 
 
@@ -59,8 +59,8 @@
 </template>
 
 <script>
-import axios from "axios";
 
+import axios from "axios";
 export default {
   name: "userManagement",
   data() {
@@ -79,20 +79,38 @@ export default {
     handleDelete(index) {
       var user = this.tableData[index]
       //调用后端删除用户的接口
-      axios.get(
-          "http://localhost:8080/user/delUser",
-          {
-            "params": {
-              "uid": user.uid
+      this.$confirm('此操作将删除该用户, 是否继续?', '删除提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        axios.get(
+            "http://localhost:8080/user/delUser",
+            {
+              "params": {
+                "uid": user.uid
+              }
             }
-          }
-      ).then(res => {
-        console.log(res)
-        this.tableData.splice(index, 1)
-      }, error => {
-        alert(error.toString())
-      })
+        ).then(res => {
+          console.log(res)
+          this.tableData.splice(index, 1)
+          this.$message({
 
+            type: 'success',
+            message: '删除成功!'
+          });
+        }, error => {
+          this.$message({
+            type: 'error',
+            message: '删除失败!'+error
+          });
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
     }
   },
   mounted() {
