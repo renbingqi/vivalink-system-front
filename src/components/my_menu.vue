@@ -51,6 +51,9 @@ export default {
     },
     api_management(){
       this.$router.push("/home/apimanagement")
+    },
+    s3_management(){
+      this.$router.push("/home/s3management")
     }
   }
 }

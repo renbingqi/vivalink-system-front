@@ -11,18 +11,20 @@
         style="width: 100%">
 
       <el-table-column
-          label="Name"
-          prop="name"
-      width="650px">
+          label="ID"
+          prop="id"
+      width="150px">
 
       </el-table-column>
       <el-table-column
-          label="Type"
-          prop="type">
+          label="Name"
+          prop="tenantName"
+          align="center">
+
       </el-table-column>
       <el-table-column
-          label="Alias"
-      prop="alias">
+          label="S3 Bucket"
+      prop="s3_bucket">
       </el-table-column>
       <el-table-column label="操作"
       width="200px">
@@ -52,7 +54,7 @@
 import axios from "axios";
 
 export default {
-  name: "api_management",
+  name: "s3_management",
   data() {
     return {
       tableData: [],
@@ -88,7 +90,7 @@ export default {
   },
   mounted() {
     axios.get(
-        "http://localhost:8080/api/apiManagement"
+        "http://localhost:8080/s3/s3Management"
     ).then(res => {
       var user_obj = res.data.message
       user_obj.forEach((val => {

@@ -12,7 +12,7 @@ import S3sensor from "../Pages/s3/s3_sensor_detail"
 import apiManagement from "../Pages/management/api/api_management";
 import addApi from "../Pages/management/api/api_add";
 import apiEdit from "../Pages/management/api/api_edit";
-
+import s3Management from "../Pages/management/s3/s3_management";
 
 export default new VueRouter({
     routes: [
@@ -27,6 +27,10 @@ export default new VueRouter({
                 {
                     path: "apimanagement",
                     component: apiManagement,
+                },
+                {
+                    path: "s3management",
+                    component: s3Management,
                 },
                 {
                     path: "apiedit",
