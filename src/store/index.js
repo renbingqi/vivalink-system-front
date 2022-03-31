@@ -24,7 +24,8 @@ const mutations = {
 const state = {
 	userName:"", //当前的和
 	s3Data:'',
-	api_list:''
+	api_list:'',
+	s3_list:''
 }
 
 //创建并暴露store

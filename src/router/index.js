@@ -14,6 +14,7 @@ import addApi from "../Pages/management/api/api_add";
 import apiEdit from "../Pages/management/api/api_edit";
 import s3Management from "../Pages/management/s3/s3_management";
 import addS3 from "../Pages/management/s3/s3_add";
+import s3Edit from "../Pages/management/s3/s3_edit";
 
 
 export default new VueRouter({
@@ -38,6 +39,11 @@ export default new VueRouter({
                     path: "apiedit",
                     component: apiEdit,
                 },
+                {
+                    path: "s3edit",
+                    component: s3Edit,
+                },
+
                 {
                     path: "adduser",
                     component: addUser,

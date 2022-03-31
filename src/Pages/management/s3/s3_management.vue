@@ -61,7 +61,7 @@ export default {
     },
     handleEdit(index, row) {
       var aid=row.id
-      this.$router.push("/home/apiedit?aid="+aid)
+      this.$router.push("/home/s3edit?aid="+aid)
     },
     handleDelete(index) {
       var obj = this.tableData[index]
@@ -95,7 +95,7 @@ export default {
     }, error => {
       console.log(error)
     })
-    this.$store.state.api_list=this.tableData
+    this.$store.state.s3_list=this.tableData
   }
 }
 </script>

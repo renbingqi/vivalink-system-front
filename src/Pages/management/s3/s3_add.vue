@@ -19,13 +19,35 @@
       <el-form-item label="aws_secret_access_key">
         <el-input v-model="sizeForm.aws_secret_access_key"></el-input>
       </el-form-item>
-      <el-form-item label="file_info">
-        <el-input v-model="sizeForm.file_info"></el-input>
+      <el-form-item label="File_Info">
+        <el-select v-model="sizeForm.file_info.ECG" placeholder="请选择ECG文件数量">
+          <el-option value=0></el-option>
+          <el-option value=4></el-option>
+          <el-option value=6></el-option>
+          <el-option value=8></el-option>
+          <el-option value=12></el-option>
+        </el-select> ECG
+        <br>
+        <el-select v-model="sizeForm.file_info.Temp" placeholder="请选择Temp文件数量">
+          <el-option value=0></el-option>
+          <el-option value=1></el-option>
+          <el-option value=2></el-option>
+        </el-select> Temp
+        <br>
+        <el-select v-model="sizeForm.file_info.SpO2" placeholder="请选择SpO2文件数量">
+          <el-option value=0></el-option>
+          <el-option value=1></el-option>
+          <el-option value=2></el-option>        </el-select> SpO2
+        <br>
+        <el-select v-model="sizeForm.file_info.BP" placeholder="请选择BP文件数量">
+          <el-option value=0></el-option>
+          <el-option value=1></el-option>
+          <el-option value=2></el-option>        </el-select> BP
       </el-form-item>
 
       <el-form-item size="large">
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
-        <el-button>取消</el-button>
+        <el-button @click="onCancel">取消</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -43,13 +65,21 @@ export default {
         s3_bucket:'',
         aws_access_key_id:'',
         aws_secret_access_key:'',
-        file_info:''
+        file_info:{
+          ECG:"6",
+          Temp:"2",
+          SpO2:"2",
+          BP:"2"
+        }
       },
     };
   },
   methods: {
     onSubmit() {
       console.log(this.sizeForm);
+    },
+    onCancel(){
+      this.$router.push("/home/s3management")
     }
   }
 };
