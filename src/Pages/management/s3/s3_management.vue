@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%;overflow: scroll">
     <el-button
-        class="addUser"
+        class="s3management"
         size="mini"
         icon="el-icon-circle-plus-outline"
         @click="adds3">新增S3监控
@@ -60,24 +60,30 @@ export default {
       this.$router.push("/home/adds3")
     },
     handleEdit(index, row) {
-      var aid=row.id
-      this.$router.push("/home/s3edit?aid="+aid)
+      var sid=row.id
+      this.$router.push("/home/s3edit?aid="+sid)
     },
     handleDelete(index) {
       var obj = this.tableData[index]
       //调用后端删除api的接口
-      axios.get(
-          "http://localhost:8080/api/apiDelete",
-          {
-            "params": {
-              "aid": obj.id
+      this.$confirm("此操作将删除该S3监控，是否继续?","删除提示",{
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(()=>{
+        axios.get(
+            "http://localhost:8080/s3/s3Delete",
+            {
+              "params": {
+                "sid": obj.id
+              }
             }
-          }
-      ).then(res => {
-        console.log(res)
-        this.tableData.splice(index, 1)
-      }, error => {
-        alert(error.toString())
+        ).then(res => {
+          console.log(res)
+          this.tableData.splice(index, 1)
+        }, error => {
+          alert(error.toString())
+        })
       })
 
     }
@@ -100,7 +106,7 @@ export default {
 }
 </script>
 <style>
-.addUser {
+.s3management {
   float: right;
   margin: 8px;
 }

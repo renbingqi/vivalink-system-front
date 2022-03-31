@@ -38,6 +38,7 @@ export default {
   data(){
     return{
       s3Info:"",
+
     }
   },
   mounted() {
@@ -52,16 +53,17 @@ export default {
   methods:{
     onSubmit() {
       axios.post(
-          "http://localhost:8080/api/apiUpdate",
+          "http://localhost:8080/s3/s3Edit",
           {
-            "id":this.apiInfo.id,
-            "name":this.apiInfo.name,
-            "type":this.apiInfo.type,
-            "auth":this.apiInfo.auth,
-            "params":this.apiInfo.params,
-            "condition":this.apiInfo.condition,
-            "alias":this.apiInfo.alias,
-            "token":this.apiInfo.token
+            "sid":this.s3Info.id,
+            "s3_name":this.s3Info.tenantName,
+            "aws_access_key_id":this.s3Info.aws_access_key_id,
+            "aws_secret_access_key":this.s3Info.aws_secret_access_key,
+            "S3_bucket":this.s3Info.s3_bucket,
+            "tenantName":this.s3Info.tenantName,
+            "tenantId":this.s3Info.tenantId,
+            "tenantkey":this.s3Info.tenantKey,
+            "file_info":this.s3Info.file_info
           },
       ).then(res=>{
         if (res.data.code === 200){

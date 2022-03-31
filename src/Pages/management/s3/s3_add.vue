@@ -54,6 +54,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "s3_add",
   data() {
@@ -76,7 +78,21 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log(this.sizeForm);
+      axios.post("http://localhost:8080/s3/s3Add",
+          {
+            "s3_name":this.sizeForm.TenantName,
+            "aws_access_key_id":this.sizeForm.aws_access_key_id,
+            "aws_secret_access_key":this.sizeForm.aws_secret_access_key,
+            "S3_bucket":this.sizeForm.s3_bucket,
+            "tenantName":this.sizeForm.TenantName,
+            "tenantId":this.sizeForm.TenantId,
+            "tenantkey":this.sizeForm.TenantKey,
+            "s3_file_count":this.sizeForm.file_info
+          }).then(res=>{
+        if(res.data.code === 200){
+          this.$router.push("/home/s3management")
+        }
+      })
     },
     onCancel(){
       this.$router.push("/home/s3management")
