@@ -13,6 +13,8 @@ import apiManagement from "../Pages/management/api/api_management";
 import addApi from "../Pages/management/api/api_add";
 import apiEdit from "../Pages/management/api/api_edit";
 import s3Management from "../Pages/management/s3/s3_management";
+import addS3 from "../Pages/management/s3/s3_add";
+
 
 export default new VueRouter({
     routes: [
@@ -43,6 +45,10 @@ export default new VueRouter({
                 {
                     path: "addapi",
                     component: addApi,
+                },
+                {
+                    path: "adds3",
+                    component: addS3,
                 },
                 {
                     path: "api/detail",

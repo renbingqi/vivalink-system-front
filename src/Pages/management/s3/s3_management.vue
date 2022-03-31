@@ -4,27 +4,21 @@
         class="addUser"
         size="mini"
         icon="el-icon-circle-plus-outline"
-        @click="addapi">新增API监控
+        @click="adds3">新增S3监控
     </el-button>
     <el-table
         :data="tableData"
         style="width: 100%">
 
       <el-table-column
-          label="ID"
-          prop="id"
-      width="150px">
-
-      </el-table-column>
-      <el-table-column
-          label="Name"
+          label="TenantName"
           prop="tenantName"
-          align="center">
+      width="650px">
 
       </el-table-column>
       <el-table-column
           label="S3 Bucket"
-      prop="s3_bucket">
+          prop="s3_bucket">
       </el-table-column>
       <el-table-column label="操作"
       width="200px">
@@ -62,8 +56,8 @@ export default {
     }
   },
   methods: {
-    addapi() {
-      this.$router.push("/home/addapi")
+    adds3() {
+      this.$router.push("/home/adds3")
     },
     handleEdit(index, row) {
       var aid=row.id
@@ -95,6 +89,7 @@ export default {
       var user_obj = res.data.message
       user_obj.forEach((val => {
           this.tableData.push(val)
+            console.log(val)
         }
       ))
     }, error => {
