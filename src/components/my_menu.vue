@@ -22,7 +22,7 @@
       <el-submenu index="3">
         <div slot="title" class="menu"><i class="el-icon-setting"></i>自动化测试</div>
         <el-menu-item-group>
-          <el-menu-item index="3-1" class="menu-item">选项1</el-menu-item>
+          <el-menu-item index="3-1" class="menu-item">接口自动化</el-menu-item>
           <el-menu-item index="3-2" class="menu-item">选项2</el-menu-item>
         </el-menu-item-group>
       </el-submenu>

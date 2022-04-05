@@ -68,23 +68,42 @@ export default {
       this.$router.push("/home/apiedit?aid="+aid)
     },
     handleDelete(index) {
-      var obj = this.tableData[index]
       //调用后端删除api的接口
-      axios.get(
-          "http://localhost:8080/api/apiDelete",
-          {
-            "params": {
-              "aid": obj.id
+      this.$confirm("此操作将删除该S3监控，是否继续?","删除提示",{
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(()=>{
+        var obj = this.tableData[index]
+        //调用后端删除api的接口
+        axios.get(
+            "http://localhost:8080/api/apiDelete",
+            {
+              "params": {
+                "aid": obj.id
+              }
             }
+        ).then(res => {
+          console.log(res)
+          this.tableData.splice(index, 1)
+          if( res.data.code === 200){
+            this.$message({
+              message:"接口:"+obj.alias +" 删除成功",
+              type:"success"
+            })
+          }else {
+            this.$message({
+              message:"接口:"+obj.alias +" 删除失败",
+              type:"error"
+            })
           }
-      ).then(res => {
-        console.log(res)
-        this.tableData.splice(index, 1)
-      }, error => {
-        alert(error.toString())
+        }, error => {
+          alert(error.toString())
+        })
       })
 
     }
+
   },
   mounted() {
     axios.get(

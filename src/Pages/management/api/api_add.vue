@@ -32,7 +32,7 @@
       </el-form-item>
       <el-form-item size="large">
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
-        <el-button>取消</el-button>
+        <el-button @click="onCancel">取消</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -59,7 +59,11 @@ export default {
   methods: {
     onSubmit() {
       console.log(this.sizeForm);
+    },
+    onCancel(){
+      this.$router.push("/home/apimanagement")
     }
+
   }
 };
 </script>
