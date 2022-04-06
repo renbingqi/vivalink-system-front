@@ -1,6 +1,6 @@
 <template>
   <div style="overflow: scroll;position: relative">
-  <el-collapse v-model="activeName" accordion v-for="(value,key,index) in s3_file_list" :key="index" >
+  <el-collapse id="result" v-model="activeName" accordion v-for="(value,key,index) in s3_file_list" :key="index" >
     <el-collapse-item :title=key :name=index class="file">
       <div v-for="(item,index) in value" :key="index">
         <hr>
@@ -34,10 +34,16 @@ export default {
     }
   },
   mounted() {
+    // const loading=this.$loading({
+    //   text: '拼命加载中',
+    //   spinner: 'el-icon-loading',
+    //   background: 'rgba(0, 0, 0, 0.7)'
+    // });
     var id=this.$route.fullPath.split("=")[1]
     axios.get("http://localhost:8080/s3/s3detail?id="+id+"&detail=s3_file").then(
         res=>{
           this.s3_file_list=res.data.message
+          // loading.close()
         },err=>{
           console.log(err)
         }

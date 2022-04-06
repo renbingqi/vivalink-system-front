@@ -8,8 +8,8 @@
           <el-menu-item index="1-2" class="menu-item" @click="s3_listener">S3监控</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <el-submenu index="2">
-        <div slot="title" class="menu"><i class="el-icon-menu"></i>系统管理</div>
+      <el-submenu index="2" v-show="show">
+        <div slot="title" class="menu"><i class="el-icon-menu" ></i>系统管理</div>
         <el-menu-item-group>
           <el-menu-item index="2-1" class="menu-item" @click="user_management">用户管理</el-menu-item>
           <el-submenu index="2-2">
@@ -20,17 +20,26 @@
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="3">
-        <div slot="title" class="menu"><i class="el-icon-setting"></i>自动化测试</div>
+        <div slot="title" class="menu"><i class="el-icon-setting"></i>接口测试</div>
         <el-menu-item-group>
-          <el-menu-item index="3-1" class="menu-item">接口自动化</el-menu-item>
-          <el-menu-item index="3-2" class="menu-item">选项2</el-menu-item>
+          <el-menu-item index="3-1" class="menu-item">项目列表</el-menu-item>
+          <el-menu-item index="3-2" class="menu-item">接口测试</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
+      <el-menu-item index="2">
+        <i class="el-icon-menu"></i>
+        <span slot="title">测试报告</span>
+      </el-menu-item>
     </el-menu>
   </el-aside>
 </template>
 
 <script>
+
+// import axios from "axios";
+
+import axios from "axios";
+
 export default {
   name: "menu",
   methods: {
@@ -55,7 +64,21 @@ export default {
     s3_management(){
       this.$router.push("/home/s3management")
     }
-  }
+  },
+  data(){
+    return{
+      "show":false,
+    }
+  },
+  beforeCreate() {
+    var user=JSON.parse(localStorage.getItem('user')).name
+    axios.get("http://localhost:8080/user/get_user?username="+user).then(res=>{
+      if(res.data.code === 200 ){
+        var permissions= res.data.message
+        this.show = permissions === 1;
+      }
+    })}
+
 }
 </script>
 

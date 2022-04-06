@@ -82,7 +82,7 @@ export default {
     }else if(this.$route.path.split('/')[2] === "s3"){
       this.showS3Tab=true
     }
-  }
+  },
 
 }
 </script>
