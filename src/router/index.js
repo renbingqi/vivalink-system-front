@@ -15,6 +15,7 @@ import apiEdit from "../Pages/management/api/api_edit";
 import s3Management from "../Pages/management/s3/s3_management";
 import addS3 from "../Pages/management/s3/s3_add";
 import s3Edit from "../Pages/management/s3/s3_edit";
+import project from "../Pages/test/project";
 
 
 export default new VueRouter({
@@ -89,6 +90,10 @@ export default new VueRouter({
                 {
                     path: "s3/sensor",
                     component:S3sensor
+                },
+                {
+                    path: "test/project",
+                    component:project
                 },
             ]
         },

@@ -20,10 +20,11 @@
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="3">
-        <div slot="title" class="menu"><i class="el-icon-setting"></i>接口测试</div>
+        <div slot="title" class="menu"><i class="el-icon-setting"></i>测试管理</div>
         <el-menu-item-group>
-          <el-menu-item index="3-1" class="menu-item">项目列表</el-menu-item>
-          <el-menu-item index="3-2" class="menu-item">接口测试</el-menu-item>
+          <el-menu-item index="3-1" class="menu-item" @click="projectList">项目列表</el-menu-item>
+          <el-menu-item index="3-2" class="menu-item" @click="caseList">用例列表</el-menu-item>
+          <el-menu-item index="3-2" class="menu-item" @click="taskList">任务列表</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-menu-item index="2">
@@ -63,6 +64,15 @@ export default {
     },
     s3_management(){
       this.$router.push("/home/s3management")
+    },
+    projectList(){
+      this.$router.push("/home/test/project")
+    },
+    caseList(){
+      this.$router.push("/home/test/case")
+    },
+    taskList(){
+      this.$router.push("/home/test/task")
     }
   },
   data(){
