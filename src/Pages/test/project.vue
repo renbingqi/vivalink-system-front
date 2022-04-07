@@ -1,8 +1,8 @@
 <template >
   <div>
     <div id="operate">
-      <el-button type="primary"  class="button" size="mini" icon="el-icon-circle-plus-outline" >新增</el-button>
-      <el-button type="primary"  class="button" size="mini" icon="el-icon-s-promotion">运行</el-button>
+      <el-button type="primary"  class="button" size="mini" icon="el-icon-circle-plus-outline" @click="add">新增</el-button>
+      <el-button type="primary"  class="button" size="mini" icon="el-icon-s-promotion" @click="run">运行</el-button>
     </div>
     <el-table id="project"
               border="true"
@@ -17,7 +17,7 @@
       </el-table-column>
       <el-table-column
           label="编号"
-          width="120"
+          width="55"
           prop="id"
           align="center"
       >
@@ -42,8 +42,7 @@
           label="操作"
           show-overflow-tooltip
           align="center">
-        <template slot-scope="scope"
-        >
+        <template slot-scope="scope">
           <el-button
               size="mini"
               icon="el-icon-edit"
@@ -55,8 +54,6 @@
               icon="el-icon-delete"
               @click="handleDelete(scope.$index, scope.row)">删除
           </el-button>
-
-
         </template>
       </el-table-column>
     </el-table>
@@ -71,25 +68,24 @@ export default {
   data() {
     return {
       tableData: [{
-        id: '2016-05-03',
-        name: '王小虎',
-        count: '上海市普陀区金沙江路 1518 弄',
-        note:"项目1"
+        id: 1,
+        name: 'vCloud Data Query',
+        count: 10,
+        note:"vCloud Data Query API测试"
       },{
-        id: '2016-05-03',
-        name: '王小虎',
-        count: '上海市普陀区金沙江路 1518 弄',
-        note:"项目1"
+        id: 2,
+        name: 'Analysis Service',
+        count: 11,
+        note:"Analysis API测试"
       },{
-        id: '2016-05-03',
-        name: '王小虎',
-        count: '上海市普陀区金沙江路 1518 弄',
-        note:"项目1"
+        id: 3,
+        name: 'Server SDK',
+        count: 2,
+        note:"Server SDK API测试"
       }],
       multipleSelection: []
     }
   },
-
   methods: {
     toggleSelection(rows) {
       if (rows) {
@@ -102,6 +98,15 @@ export default {
     },
     handleSelectionChange(val) {
       this.multipleSelection = val;
+    },
+    add(){
+      this.$router.push("project/add")
+    },
+    run(){
+      console.log(this.multipleSelection)
+    },
+    show(){
+      console.log("触发")
     }
   }
 }

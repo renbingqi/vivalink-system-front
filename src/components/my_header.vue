@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container style="background-color:#f8f7f7">
     <el-header style="text-align: right; font-size: 12px">
       <div style="float: left;">
         <el-input
@@ -22,13 +22,10 @@
       <span>&nbsp;&nbsp;</span>
       <span>{{ userName }}</span>
     </el-header>
-
     <api-tab-menu v-show="showTab"></api-tab-menu>
     <s3-tab-menu v-show="showS3Tab"></s3-tab-menu>
     <router-view></router-view>
   </el-container>
-
-
 </template>
 
 <script>

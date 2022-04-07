@@ -4,7 +4,7 @@
       <!--      <img src="../assets/backgroud.jpg" alt="background">-->
     </div>
     <div id="form">
-      <h1 id="h1">VivaLNK 综合监控系统</h1>
+      <h1 id="h1">VivaLNK 监控测试平台</h1>
       <div id="content">
         <div class="form-horizontal">
           <div class="form-group">
@@ -15,9 +15,9 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+            <label for="inputPassword3" class="col-sm-2 control-label" >密码</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码" v-model="passWord">
+              <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码" v-model="passWord" @keyup.enter="submit">
             </div>
           </div>
           <div class="form-group">
@@ -38,7 +38,7 @@
       </div>
       <div id="message">
         <div id="name_info" class="info"><span>{{usernameError}}</span></div>
-        <div id="password_info" class="info"><span>{{ error }}</span></div>
+        <div id="password_info" class="info" ><span>{{ error }}</span></div>
       </div>
     </div>
   </div>
@@ -101,7 +101,7 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: url(../assets/backgroud.jpg) no-repeat center;
+  background: url("../assets/backgroud.jpg") no-repeat center;
   background-size: 100% 100%;
   background-attachment: fixed; /* 不设置的话页面滑动时，背景会不铺满*/
   opacity: 0.5;

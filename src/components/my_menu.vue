@@ -23,7 +23,7 @@
         <div slot="title" class="menu"><i class="el-icon-setting"></i>测试管理</div>
         <el-menu-item-group>
           <el-menu-item index="3-1" class="menu-item" @click="projectList">项目列表</el-menu-item>
-          <el-menu-item index="3-2" class="menu-item" @click="caseList">用例列表</el-menu-item>
+          <el-menu-item index="3-2" class="menu-item" @click="caseList">接口测试</el-menu-item>
           <el-menu-item index="3-2" class="menu-item" @click="taskList">任务列表</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
