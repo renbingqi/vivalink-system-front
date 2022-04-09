@@ -117,10 +117,11 @@ html, body {
 }
 
 #context {
+  background-color: white;
   position: relative;
-  width: 700px;
-  height: 500px;
-  top: 50%;
+  width: 95%;
+  height: 80%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -139,10 +140,16 @@ html, body {
 }
 
 #inputPassword4 {
-  width: 48%;
+  width: 30%;
+}
+#inputEmail3,#inputPassword3{
+  width: 35%;
 }
 
 #role {
   margin-right: 15px;
+}
+.form-horizontal{
+  padding: 80px;
 }
 </style>

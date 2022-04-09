@@ -101,7 +101,7 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: url("../assets/backgroud.jpg") no-repeat center;
+  /*background: url("../assets/backgroud.jpg") no-repeat center;*/
   background-size: 100% 100%;
   background-attachment: fixed; /* 不设置的话页面滑动时，背景会不铺满*/
   opacity: 0.5;

@@ -27,7 +27,82 @@
       </div>
     </div>
     <div id="right-side">
-
+      <el-table id="project"
+                border="true"
+                ref="multipleTable"
+                :data="tableData_api"
+                tooltip-effect="dark"
+                style="width: 100%"
+                @selection-change="handleSelectionChange">
+        <el-table-column
+            type="selection"
+            width="55">
+        </el-table-column>
+        <el-table-column
+            label="编号"
+            width="55"
+            prop="id"
+            align="center"
+        >
+        </el-table-column>
+        <el-table-column
+            label="用例名称"
+            prop="name"
+            align="center">
+        </el-table-column>
+        <el-table-column
+            prop="module"
+            label="模块"
+            align="center">
+        </el-table-column>
+        <el-table-column
+            prop="createTime"
+            label="创建时间"
+            show-overflow-tooltip
+            align="center">
+        </el-table-column>
+        <el-table-column
+            prop="updateTime"
+            label="更新时间"
+            show-overflow-tooltip
+            align="center">
+        </el-table-column>
+        <el-table-column
+            label="操作"
+            show-overflow-tooltip
+            align="center"
+        width="200px">
+          <template slot-scope="scope">
+            <el-button
+                size="mini"
+                icon="el-icon-edit"
+                @click="handleEdit(scope.$index, scope.row)">编辑
+            </el-button>
+            <el-button
+                type="danger"
+                size="mini"
+                icon="el-icon-delete"
+                @click="handleDelete(scope.$index, scope.row)">删除
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <div class="block" style="width: 100%">
+        <el-pagination
+            background
+            layout="prev, pager, next"
+            :total="23"
+            class="pagination">
+        </el-pagination>
+        <el-button type="primary"
+                   size="mini"
+                   icon="el-icon-circle-plus-outline"
+                   style="margin-left: 480px">新增</el-button>
+        <el-button type="danger"
+                   size="mini"
+                   icon="el-icon-delete"
+        style="margin-left: 20px">删除选中项</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -37,7 +112,68 @@ export default {
   name: "apiTest",
   data(){
     return {
-      tableData:["vcloud","vcloud2","vcloud3","vcloud4","vcloud5","vcloud6","vcloud7"]
+      tableData_api: [{
+        id: 1,
+        name: 'vCloud Data Query ',
+        module: "Get Token",
+        createTime:"2022/04/01",
+        updateTime:"2022/04/01"
+      },{
+        id: 2,
+        name: 'Analysis Service',
+        module: "Get Token",
+        createTime:"2022/04/01",
+        updateTime:"2022/04/03"
+      },{
+        id: 3,
+        name: 'Server SDK',
+        module: "Get Token",
+        createTime:"2022/04/01",
+        updateTime:"2022/04/05"
+      },{
+        id: 1,
+        name: 'vCloud Data Query',
+        module: "Get Token",
+        createTime:"2022/04/01",
+        updateTime:"2022/04/01"
+      },{
+        id: 2,
+        name: 'Analysis Service',
+        module: "Get Token",
+        createTime:"2022/04/01",
+        updateTime:"2022/04/03"
+      },{
+        id: 3,
+        name: 'Server SDK',
+        module: "Get Token",
+        createTime:"2022/04/01",
+        updateTime:"2022/04/05"
+      },{
+        id: 1,
+        name: 'vCloud Data Query',
+        module: "Get Token",
+        createTime:"2022/04/01",
+        updateTime:"2022/04/01"
+      },{
+        id: 2,
+        name: 'Analysis Service',
+        module: "Get Token",
+        createTime:"2022/04/01",
+        updateTime:"2022/04/03"
+      },{
+        id: 3,
+        name: 'Server SDK',
+        module: "Get Token",
+        createTime:"2022/04/01",
+        updateTime:"2022/04/05"
+      },{
+        id: 1,
+        name: 'vCloud Data Query',
+        module: "Get Token",
+        createTime:"2022/04/01",
+        updateTime:"2022/04/01"
+      }],
+      tableData:["vcloud","vcloud2","vcloud3","vcloud4","vcloud5","vcloud6","vcloud7","vcloud5","vcloud6","vcloud7"]
     }
   },
   methods:{
@@ -63,8 +199,7 @@ export default {
 }
 
 #right-side {
-  border: solid black;
-  width: 70%;
+  width: 75%;
   height: 200px;
   margin: 5px 20px 0 0;
   position: absolute;
@@ -91,7 +226,7 @@ export default {
 
 .project-list{
   position: absolute;
-  top: 20%;
+  top: 10%;
   width: 100%;
 }
 .add_item{

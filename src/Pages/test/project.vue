@@ -44,6 +44,12 @@
           align="center">
         <template slot-scope="scope">
           <el-button
+              type="primary"
+              size="mini"
+              icon="el-icon-setting"
+              @click="handleConfig(scope.$index, scope.row)">配置
+          </el-button>
+          <el-button
               size="mini"
               icon="el-icon-edit"
               @click="handleEdit(scope.$index, scope.row)">编辑
@@ -99,6 +105,7 @@ export default {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
+    handleConfig(){},
     add(){
       this.$router.push("project/add")
     },

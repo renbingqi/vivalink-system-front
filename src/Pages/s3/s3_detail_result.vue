@@ -3,7 +3,7 @@
       :data="result"
       style="width: 100%; overflow: auto"
       height="10px"
-      :default-sort="{prop:'result',order:'descending'}">
+      :default-sort="{prop:'recordTime',order:'descending'}">
     <el-table-column
         label=""
         width="50px">
