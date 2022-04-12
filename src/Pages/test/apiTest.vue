@@ -1,7 +1,9 @@
 <template>
   <div id="body">
-    <el-dialog title="新增API" :visible.sync="dialogFormVisible" width="95%" top="1vh">
+<!--    模态框-->
+    <el-dialog title="新增API" :visible.sync="dialogFormVisible" width="95%" top="5vh">
       <div style="height: 500px;">
+        <!--      Method,url,send部分-->
         <div class="header">
           <div class="Method">
             <el-select v-model="value" placeholder="Method">
@@ -14,41 +16,88 @@
             </el-select>
           </div>
           <div class="url">
-            <el-input></el-input>
+            <el-input placeholder="Enter Request URL"></el-input>
           </div>
           <div class="send">
-            <el-button type="primary" round>Send</el-button>
+            <el-button type="primary" >Send</el-button>
           </div>
         </div>
+<!--        Params部分-->
         <div class="header_type">
+<!--          tabs部分-->
           <el-tabs v-model="activeName" @tab-click="handleClick_tag">
+<!--            Params部分-->
             <el-tab-pane label="Params" name="first">
               <div>
                 <el-table
                     :data="tableData_Params"
                     border
                     style="width: 100%"
-                height="150px">
+                    height="150px">
                   <el-table-column
-                      prop="key"
+                      width="80">
+                    <el-checkbox></el-checkbox>
+                  </el-table-column>
+                  <el-table-column
                       label="KEY"
                       width="280">
+                    <el-input placeholder="Key"></el-input>
                   </el-table-column>
                   <el-table-column
-                      prop="value"
                       label="VALUE"
                       width="280">
+                    <el-input placeholder="Value"></el-input>
                   </el-table-column>
                   <el-table-column
-                      prop="description"
                       label="DESCRIPTION"
                       width="280">
+                    <el-input placeholder="Description"></el-input>
                   </el-table-column>
                 </el-table>
               </div>
             </el-tab-pane>
-            <el-tab-pane label="Headers" name="second">Headers</el-tab-pane>
-            <el-tab-pane label="Body" name="third">Body</el-tab-pane>
+<!--            Headers部分-->
+            <el-tab-pane label="Headers" name="second">
+              <div >
+                <el-table
+                    :data="tableData_Headers"
+                    border
+                    style="width: 100%"
+                    height="150px">
+                  <el-table-column
+                      width="80">
+                    <el-checkbox></el-checkbox>
+                  </el-table-column>
+                  <el-table-column
+                      label="KEY"
+                      width="280">
+                    <el-input placeholder="Key"></el-input>
+                  </el-table-column>
+                  <el-table-column
+                      label="VALUE"
+                      width="280">
+                    <el-input placeholder="Value"></el-input>
+                  </el-table-column>
+                  <el-table-column
+                      label="DESCRIPTION"
+                      width="280">
+                    <el-input placeholder="Description"></el-input>
+                  </el-table-column>
+                </el-table>
+              </div>
+            </el-tab-pane>
+<!--            Body部分-->
+            <el-tab-pane label="Body" name="third">
+              <div style="width: 800px">
+                <el-input type="textarea" maxlength="80" size="medium" rows="10">
+                </el-input>
+              </div>
+            </el-tab-pane>
+<!--            Response部分-->
+            <span>Response:</span>
+            <div class="response">
+              <el-input type="textarea" maxlength="80" size="medium" rows="10"></el-input>
+            </div>
           </el-tabs>
         </div>
 
@@ -58,7 +107,6 @@
         <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
       </div>
     </el-dialog>
-
     <div id="left-side">
       <div class="header">
         <div class="search">
@@ -260,11 +308,15 @@ export default {
         },
 
       ],
-      activeName: 'second',
+      activeName: 'first',
       tableData_Params: [{
-        key: '2016-05-02',
-        value: '王小虎',
-        description: '上海市普陀区金沙江路 1518 弄'}]
+        key: '',
+        value: '',
+        description: ''}],
+      tableData_Headers:[{
+        key: '',
+        value: '',
+        description: ''}]
 
     }
   },
@@ -351,7 +403,7 @@ export default {
 }
 
 .send {
-  left: 950px;
+  left: 910px;
 }
 
 .header_type, .header {
