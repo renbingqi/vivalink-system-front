@@ -140,6 +140,7 @@
                 :data="tableData_api"
                 tooltip-effect="dark"
                 style="width: 100%"
+                height="90%"
                 @selection-change="handleSelectionChange">
         <el-table-column
             type="selection"
@@ -204,13 +205,14 @@
         <el-button type="primary"
                    size="mini"
                    icon="el-icon-circle-plus-outline"
-                   style="margin-left: 480px"
+                   class="add"
                    @click="dialogFormVisible = true">新增
         </el-button>
         <el-button type="danger"
                    size="mini"
                    icon="el-icon-delete"
-                   style="margin-left: 20px">删除选中项
+                   style="margin-left: 20px"
+        class="delete">删除选中项
         </el-button>
       </div>
     </div>
@@ -332,14 +334,19 @@ export default {
 </script>
 
 <style scoped>
+html,body{
+  height: 100%;
+}
 #body {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 #left-side {
   background-color: white;
   width: 20%;
-  height: 600px;
+  height: 95%;
   margin: 5px 0 0 20px;
   position: absolute;
   overflow: auto;
@@ -347,7 +354,7 @@ export default {
 
 #right-side {
   width: 75%;
-  height: 200px;
+  height: 95%;
   margin: 5px 20px 0 0;
   position: absolute;
   right: 5px;
@@ -371,6 +378,10 @@ export default {
   margin-top: 15px;
   right: 12px;
   /*margin-right: 10px;*/
+}
+#project{
+  height: 90%;
+  /*overflow: auto;*/
 }
 
 .project-list {
@@ -413,5 +424,20 @@ export default {
 .header_type {
   top: 120px;
   left:220px
+}
+.block{
+  position: absolute;
+  bottom: 0;
+  /*margin-top: -50px;*/
+}
+.add{
+  right: 180px;
+}
+.delete{
+  right: 50px;
+}
+.add,.delete{
+  position: absolute;
+  bottom: 20px;
 }
 </style>
