@@ -1,10 +1,11 @@
 <template>
   <div id="body">
-<!--    模态框-->
+    <!--    模态框-->
     <el-dialog title="新增API" :visible.sync="dialogFormVisible" width="95%" top="5vh">
       <div style="height: 500px;">
         <!--      Method,url,send部分-->
         <div class="header">
+          <span style="position: absolute;left: 120px;top: 10px">基础信息:</span>
           <div class="Method">
             <el-select v-model="value" placeholder="Method">
               <el-option
@@ -19,86 +20,88 @@
             <el-input placeholder="Enter Request URL"></el-input>
           </div>
           <div class="send">
-            <el-button type="primary" >Send</el-button>
+            <el-button type="primary">Send</el-button>
           </div>
         </div>
-<!--        Params部分-->
+        <!--        Params部分-->
         <div class="header_type">
-<!--          tabs部分-->
-          <el-tabs v-model="activeName" @tab-click="handleClick_tag">
-<!--            Params部分-->
-            <el-tab-pane label="Params" name="first">
-              <div>
-                <el-table
-                    :data="tableData_Params"
-                    border
-                    style="width: 100%"
-                    height="150px">
-                  <el-table-column
-                      width="80">
-                    <el-checkbox></el-checkbox>
-                  </el-table-column>
-                  <el-table-column
-                      label="KEY"
-                      width="280">
-                    <el-input placeholder="Key"></el-input>
-                  </el-table-column>
-                  <el-table-column
-                      label="VALUE"
-                      width="280">
-                    <el-input placeholder="Value"></el-input>
-                  </el-table-column>
-                  <el-table-column
-                      label="DESCRIPTION"
-                      width="280">
-                    <el-input placeholder="Description"></el-input>
-                  </el-table-column>
-                </el-table>
-              </div>
-            </el-tab-pane>
-<!--            Headers部分-->
-            <el-tab-pane label="Headers" name="second">
-              <div >
-                <el-table
-                    :data="tableData_Headers"
-                    border
-                    style="width: 100%"
-                    height="150px">
-                  <el-table-column
-                      width="80">
-                    <el-checkbox></el-checkbox>
-                  </el-table-column>
-                  <el-table-column
-                      label="KEY"
-                      width="280">
-                    <el-input placeholder="Key"></el-input>
-                  </el-table-column>
-                  <el-table-column
-                      label="VALUE"
-                      width="280">
-                    <el-input placeholder="Value"></el-input>
-                  </el-table-column>
-                  <el-table-column
-                      label="DESCRIPTION"
-                      width="280">
-                    <el-input placeholder="Description"></el-input>
-                  </el-table-column>
-                </el-table>
-              </div>
-            </el-tab-pane>
-<!--            Body部分-->
-            <el-tab-pane label="Body" name="third">
-              <div style="width: 800px">
-                <el-input type="textarea" maxlength="80" size="medium" rows="10">
-                </el-input>
-              </div>
-            </el-tab-pane>
-<!--            Response部分-->
+          <!--          tabs部分-->
+          <dvi class="request">
+            <el-tabs v-model="activeName" @tab-click="handleClick_tag">
+              <!--            Params部分-->
+              <el-tab-pane label="Params" name="first">
+                <div>
+                  <el-table
+                      :data="tableData_Params"
+                      border
+                      style="width: 100%"
+                      height="150px">
+                    <el-table-column
+                        width="80">
+                      <el-checkbox></el-checkbox>
+                    </el-table-column>
+                    <el-table-column
+                        label="KEY"
+                        width="280">
+                      <el-input placeholder="Key"></el-input>
+                    </el-table-column>
+                    <el-table-column
+                        label="VALUE"
+                        width="280">
+                      <el-input placeholder="Value"></el-input>
+                    </el-table-column>
+                    <el-table-column
+                        label="DESCRIPTION"
+                        width="280">
+                      <el-input placeholder="Description"></el-input>
+                    </el-table-column>
+                  </el-table>
+                </div>
+              </el-tab-pane>
+              <!--            Headers部分-->
+              <el-tab-pane label="Headers" name="second">
+                <div>
+                  <el-table
+                      :data="tableData_Headers"
+                      border
+                      style="width: 100%"
+                      height="150px">
+                    <el-table-column
+                        width="80">
+                      <el-checkbox></el-checkbox>
+                    </el-table-column>
+                    <el-table-column
+                        label="KEY"
+                        width="280">
+                      <el-input placeholder="Key"></el-input>
+                    </el-table-column>
+                    <el-table-column
+                        label="VALUE"
+                        width="280">
+                      <el-input placeholder="Value"></el-input>
+                    </el-table-column>
+                    <el-table-column
+                        label="DESCRIPTION"
+                        width="280">
+                      <el-input placeholder="Description"></el-input>
+                    </el-table-column>
+                  </el-table>
+                </div>
+              </el-tab-pane>
+              <!--            Body部分-->
+              <el-tab-pane label="Body" name="third">
+                <div style="width: 800px">
+                  <el-input type="textarea" maxlength="80" size="medium" rows="10">
+                  </el-input>
+                </div>
+              </el-tab-pane>
+            </el-tabs>
+          </dvi>
+          <!--            Response部分-->
+          <div class="response">
             <span>Response:</span>
-            <div class="response">
-              <el-input type="textarea" maxlength="80" size="medium" rows="10"></el-input>
-            </div>
-          </el-tabs>
+            <el-input type="textarea" maxlength="80" size="medium" rows="10"></el-input>
+          </div>
         </div>
 
       </div>
@@ -212,7 +215,7 @@
                    size="mini"
                    icon="el-icon-delete"
                    style="margin-left: 20px"
-        class="delete">删除选中项
+                   class="delete">删除选中项
         </el-button>
       </div>
     </div>
@@ -314,11 +317,13 @@ export default {
       tableData_Params: [{
         key: '',
         value: '',
-        description: ''}],
-      tableData_Headers:[{
+        description: ''
+      }],
+      tableData_Headers: [{
         key: '',
         value: '',
-        description: ''}]
+        description: ''
+      }]
 
     }
   },
@@ -334,9 +339,10 @@ export default {
 </script>
 
 <style scoped>
-html,body{
+html, body {
   height: 100%;
 }
+
 #body {
   position: relative;
   width: 100%;
@@ -379,7 +385,8 @@ html,body{
   right: 12px;
   /*margin-right: 10px;*/
 }
-#project{
+
+#project {
   height: 90%;
   /*overflow: auto;*/
 }
@@ -423,21 +430,38 @@ html,body{
 
 .header_type {
   top: 120px;
-  left:220px
+  left: 220px;
+  height: 550px;
 }
-.block{
+
+.block {
   position: absolute;
   bottom: 0;
   /*margin-top: -50px;*/
 }
-.add{
+
+.add {
   right: 180px;
 }
-.delete{
+
+.delete {
   right: 50px;
 }
-.add,.delete{
+
+.add, .delete {
   position: absolute;
   bottom: 20px;
+}
+
+.request {
+  height: 200px;
+  position: absolute;
+}
+
+.response {
+  height: 350px;
+  position: absolute;
+  top: 310px;
+  width: 800px;
 }
 </style>
